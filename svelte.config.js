@@ -1,12 +1,13 @@
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
-import adapter from '@sveltejs/adapter-static';
+import { adapter } from 'sveltekit-adapter-aws';
 
 export default {
-  kit: {
-    adapter: adapter(),
-    prerender: {
-      default: true,
-    },
-  },
+  // Consult https://svelte.dev/docs#compile-time-svelte-preprocess
+  // for more information about preprocessors
   preprocess: vitePreprocess(),
+  kit: {
+    adapter: adapter({
+      autoDeploy: true,
+    }),
+  },
 }
